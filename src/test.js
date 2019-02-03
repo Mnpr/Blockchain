@@ -34,7 +34,13 @@ const currentBlockData = [
     }
 ];
 
-const nonce = 1234;
+//nonce that generates hash which starts with '0000'
+console.log(testblockchain.proofOfWork(previousBlockHash, currentBlockData));
+
+
+const nonce = 128867;
+
+// hash of block with given correct proof (nonce)
 console.log(testblockchain.hashBlock(previousBlockHash, currentBlockData, nonce));
 
 
