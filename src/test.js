@@ -43,4 +43,7 @@ const nonce = 128867;
 // hash of block with given correct proof (nonce)
 console.log(testblockchain.hashBlock(previousBlockHash, currentBlockData, nonce));
 
+//genesis block added as a first block in the chain
+console.log(testblockchain);
+
 
