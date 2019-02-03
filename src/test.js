@@ -15,25 +15,26 @@ testblockchain.createNewBlock(1324, 'PREVFJP934848', 'HASH984YASO9DF');
 
 
 // Block hash generation 
-const previousHashBlock = 'JFSA7D0R4YEWROHASDKF';
+const previousBlockHash = 'JFSA7D0R4YEWROHASDKF';
 const currentBlockData = [
     {
         sender:'ALEXFL94ER8TIERUE',
-        receiver:'BOBDSIORPEOWIETSD',
-        amount:'100'
+        amount:100,
+        receiver:'BOBDSIORPEOWIETSD'
     },
     {
         sender:'ALEXSDLFJEOIJFEDJ',
-        receiver:'BOBDSIORPEOWIETSD',
-        amount:'10'
+        amount:10,
+        receiver:'BOBDSIORPEOWIETSD'
     },
     {
         sender:'ALEXSDKFJOEI398RD',
-        receiver:'BOBDSIORPEOWIETSD',
-        amount:'1'
+        amount:1,
+        receiver:'BOBDSIORPEOWIETSD'
     }
 ];
-const nonce = 1349;
-console.log(testblockchain.hashBlock(previousHashBlock, currentBlockData, nonce));
+
+const nonce = 1234;
+console.log(testblockchain.hashBlock(previousBlockHash, currentBlockData, nonce));
 
 
