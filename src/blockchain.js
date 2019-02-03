@@ -3,6 +3,9 @@ const sha256 = require('sha256');
 function Blockchain(){
     this.chain =[];
     this.pendingTransaction =[];
+
+    //creating genesis block with random parameter
+    this.createNewBlock(1234, '0','0');
 }
 
 Blockchain.prototype.createNewBlock = function(nonce, hashOfPreviousBlock, hash){
