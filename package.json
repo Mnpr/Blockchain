@@ -10,6 +10,7 @@
   "author": "sudesh acharya",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "nodemon": "^1.18.9",
     "sha256": "^0.2.0"

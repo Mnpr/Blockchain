@@ -1,24 +1,23 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const Blockchain = require('./blockchain');
 const app = express();
 const port = 3000;
+const blockchain1 = new Blockchain();
 
-const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+// var urlEncoded = bodyParser.urlencoded({extended: false}); 
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// app.post('/transaction', function (req, res){
-//     res.send(`The transaction amount ${req.body.amount} will transfer to ${req.body.reciever} `);
-// });
- 
 var jsonParser = bodyParser.json();
 app.post('/transaction', jsonParser, function (req, res) {
   if (!req.body) return res.sendStatus(400)
-  res.send(`The transaction amount ${req.body.amount} will transfer to ${req.body.receiver} `);
+  const blockIndex = blockchain1.createNewTransaction(req.body.amount, req.body.sender, req.body.receiver);
+  res.json({note: `the transaction is added in block ${blockIndex}`});
 });
 
 
 app.get('/blockchain', function (req, res) {
-    
+    res.send(blockchain1);
 });
 
 
