@@ -23,6 +23,19 @@ app.get('/blockchain', function (req, res) {
 
 
 app.get('/mine', function(req, res){
+    const lastBlock = blockchain1.getLastBlock();
+    const previousBlockHash = lastBlock['hash'];
+    const currentBlockData = {
+      transaction: blockchain1.pendingTransaction,
+      index: lastBlock['index'] + 1
+    }
+    const nonce = blockchain1.proofOfWork(previousBlockHash, currentBlockData);
+    const hashBlock = blockchain1.hashBlock(previousBlockHash, currentBlockData, nonce);
+    const newBlock = blockchain1.createNewBlock(nonce, previousBlockHash, hashBlock);
+    res.json({
+      note: "New block in mined successfully",
+      block: newBlock
+    });
     
 });
 
