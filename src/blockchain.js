@@ -8,14 +8,14 @@ function Blockchain(){
     this.createNewBlock(1234, '0','0');
 }
 
-Blockchain.prototype.createNewBlock = function(nonce, hashOfPreviousBlock, hash){
+Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash){
     const newBlock = {
         index : this.chain.length+1,
         timestamp: Date.now(),
         transaction: this.pendingTransaction,
         nonce: nonce,
         hash: hash,
-        hashOfPreviousBlock : hashOfPreviousBlock
+        previousBlockHash : previousBlockHash
     };
     this.pendingTransaction = [];
     this.chain.push(newBlock);
@@ -53,6 +53,4 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData)
 	}
 	return nonce;
 }
-
-
 module.exports = Blockchain;
